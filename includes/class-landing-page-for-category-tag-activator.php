@@ -29,8 +29,9 @@ class Landing_Page_For_Category_Tag_Activator {
 	 *
 	 * @since    1.0.0
 	 */
+	
 	public static function activate() {
-
+		
 	}
 
 }
