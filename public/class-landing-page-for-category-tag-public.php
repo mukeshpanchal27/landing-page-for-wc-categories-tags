@@ -53,17 +53,11 @@ class Landing_Page_For_Category_Tag_Public {
 		$this->version = $version;
 
 		// cat
-		add_action( 'product_cat_add_form_fields', [$this,'top_bottom_categories_wp_editor_add'], 10, 2 );		
-		add_action( 'product_cat_edit_form_fields', [$this,'top_bottom_wp_editor_edit'], 10, 2 );
-		add_action( 'edit_term', [$this,'top_bottom_categories_save_wp_editor'], 10, 3 );
-		add_action( 'created_term', [$this,'top_bottom_categories_save_wp_editor'], 10, 3 );
+		
 		add_action( 'woocommerce_before_shop_loop', [$this,'top_categories_display_wp_editor_content'], 5 );
 		add_action( 'woocommerce_after_shop_loop', [$this,'bottom_categories_display_wp_editor_content'], 5 );
-		// tags
-		add_action( 'product_tag_add_form_fields', [$this,'top_bottom_tags_wp_editor_add'], 10, 5 );		
-		add_action( 'product_tag_edit_form_fields', [$this,'top_bottom_tags_wp_editor_edit'], 10, 2 );		
-		add_action( 'edit_term', [$this,'top_bottom_tags_save_wp_editor'], 10, 3 );
-		add_action( 'created_term', [$this,'top_bottom_tags_save_wp_editor'], 10, 3 );
+		
+		// tags		
 		add_action( 'woocommerce_before_shop_loop', [$this,'top_tags_display_wp_editor_content'], 5 );
 		add_action( 'woocommerce_after_shop_loop', [$this,'bottom_tags_display_wp_editor_content'], 5 );
 		
@@ -117,109 +111,42 @@ class Landing_Page_For_Category_Tag_Public {
 
 
 
-	// Display field on category admin page
-	public function top_bottom_categories_wp_editor_add() {
-
-		$get_option = get_option( 'landing_page_for_category_tag_option' );	
-		// top cat check  
-		$top_categories = isset( $get_option['top_categories'] ) ? $get_option['top_categories'] : false ;
-		// bottom cat check 
-		$bottom_categories = isset( $get_option['bottom_categories'] ) ? $get_option['bottom_categories'] : false ;
-
-		// top cat
-		if( $top_categories ){
-		?>
-		<div class="form-field">
-			<label for="top_description"><?php echo __( 'Top Description', 'woocommerce' ); ?></label>       
-			<?php       
-				wp_editor( '','top_description');
-			?>             
-		</div>
-		<?php }if($bottom_categories){ ?>
-
-		<!-- bottom cat -->
-		<div class="form-field">
-			<label for="bottom_description"><?php echo __( 'Bottom Description', 'woocommerce' ); ?></label>       
-			<?php       
-				wp_editor( '','bottom_description');
-			?>             
-		</div>
-
-		<?php
-		}
-	}
-
-	// Display field on "Edit product category" admin page
-	public function top_bottom_wp_editor_edit( $term ) {
-		
-		$get_option = get_option( 'landing_page_for_category_tag_option' );	
-		// top cat check  
-		$top_categories = isset( $get_option['top_categories'] ) ? $get_option['top_categories'] : false ;
-		// bottom cat check 
-		$bottom_categories = isset( $get_option['bottom_categories'] ) ? $get_option['bottom_categories'] : false ;		
-
-		$top_description = htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'top_description', true ) );
-
-		$bottom_description = htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'bottom_description', true ) );
-
-		if( $top_categories ){
-		?>
-		<!-- top cat -->
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="top_description"><?php echo __( 'Top Description', 'woocommerce' ); ?></label></th>
-			<td>
-				<?php                    
-					wp_editor( $top_description, 'top_description' );
-				?>                   
-			</td>
-		</tr>
-
-		<?php }if( $bottom_categories ){ ?>
-		<!-- bottom cat -->
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="bottom_description"><?php echo __( 'bottom Description', 'woocommerce' ); ?></label></th>
-			<td>
-				<?php                    
-					wp_editor( $bottom_description, 'bottom_description' );
-				?>       
-			</td>
-		</tr>
-		<?php
-		}
-	}
-
-	// Save field @ admin page 		
-	public function top_bottom_categories_save_wp_editor( $term_id, $tt_id = '', $taxonomy = '' ) {
-
-		if ( isset( $_POST['top_description'] ) && 'product_cat' === $taxonomy ) {
-			update_woocommerce_term_meta( $term_id, 'top_description', esc_attr( $_POST['top_description'] ) );
-		}		
-		
-		if ( isset( $_POST['bottom_description'] ) && 'product_cat' === $taxonomy ) {
-			update_woocommerce_term_meta( $term_id, 'bottom_description', esc_attr( $_POST['bottom_description'] ) );
-		}	
-	}
 
 	// Display field under products @ Product Category pages  		
 	public function top_categories_display_wp_editor_content() {
-		if ( is_product_taxonomy() ) {
-			$term = get_queried_object();
 
-			if ( $term && ! empty( get_woocommerce_term_meta( $term->term_id, 'top_description', true ) ) ) {
-				echo '<p class="term-description_top_description">' . wc_format_content( htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'top_description', true ) ) ) . '</p>';
-			}							
-			
+		$get_option = get_option( 'landing_page_for_category_tag_option' );	
+		// top cat check  
+		$top_categories = isset( $get_option['top_categories'] ) ? $get_option['top_categories'] : false ;
+		
+		if( $top_categories){
+			if ( is_product_category() ) {
+				$term = get_queried_object();
+
+				if ( $term && ! empty( get_term_meta ( $term->term_id, 'top_description', true ) ) ) {
+					echo '<p class="term-description_top_description">' . wc_format_content( htmlspecialchars_decode( get_term_meta ( $term->term_id, 'top_description', true ) ) ) . '</p>';
+				}							
+				
+			}
 		}
 	}
 	// Display field under products @ Product Category pages  		
 	public function bottom_categories_display_wp_editor_content() {
-		if ( is_product_taxonomy() ) {
-			$term = get_queried_object();
-		
-			if ( $term && ! empty( get_woocommerce_term_meta( $term->term_id, 'bottom_description', true ) ) ) {
-				echo '<p class="term-description_bottom_description">' . wc_format_content( htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'bottom_description', true ) ) ) . '</p>';
-			}	
+
+		$get_option = get_option( 'landing_page_for_category_tag_option' );			
+		// bottom cat check 
+		$bottom_categories = isset( $get_option['bottom_categories'] ) ? $get_option['bottom_categories'] : false ;
+
+		if($bottom_categories){
+
+			if ( is_product_category()) {
+				$term = get_queried_object();
 			
+				if ( $term && ! empty( get_term_meta ( $term->term_id, 'bottom_description', true ) ) ) {
+					echo '<p class="term-description_bottom_description">' . wc_format_content( htmlspecialchars_decode( get_term_meta ( $term->term_id, 'bottom_description', true ) ) ) . '</p>';
+				}	
+				
+			}
 		}
 	}
 
@@ -227,107 +154,42 @@ class Landing_Page_For_Category_Tag_Public {
 	* tags  
 	*/ 
 
-	// Display field on tags admin page
-	public function top_bottom_tags_wp_editor_add(){
 
-		$get_option = get_option( 'landing_page_for_category_tag_option' );	
-		// top cat check  
-		$top_tags = isset( $get_option['top_tags'] ) ? $get_option['top_tags'] : false ;
-		// bottom cat check 
-		$bottom_tags = isset( $get_option['bottom_tags'] ) ? $get_option['bottom_tags'] : false ;
-
-		// top cat
-		if( $top_tags ):
-		?>
-		<div class="form-field">
-			<label for="top_tags"><?php echo __( 'Top Description', 'woocommerce' ); ?></label>       
-			<?php       
-				wp_editor( '','top_tags');
-			?>             
-		</div>
-		<?php endif; if($bottom_tags): ?>
-
-		<!-- bottom cat -->
-		<div class="form-field">
-			<label for="bottom_tags"><?php echo __( 'Bottom Description', 'woocommerce' ); ?></label>       
-			<?php       
-				wp_editor( '','bottom_tags');
-			?>             
-		</div>
-
-		<?php
-		
-		endif;
-	}
-	
-	// Display field on "Edit product tags" admin page
-	public function top_bottom_tags_wp_editor_edit( $term ) {
-
-		$get_option = get_option( 'landing_page_for_category_tag_option' );	
-		// top cat check  
-		$top_tags = isset( $get_option['top_tags'] ) ? $get_option['top_tags'] : false ;
-		// bottom cat check 
-		$bottom_tags = isset( $get_option['bottom_tags'] ) ? $get_option['bottom_tags'] : false ;		
-
-		$top_description = htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'top_tags', true ) );
-
-		$bottom_description = htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'bottom_tags', true ) );
-
-		if( $top_tags ){
-		?>
-		<!-- top cat -->
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="top_tags"><?php echo __( 'Top Description', 'woocommerce' ); ?></label></th>
-			<td>
-				<?php                    
-					wp_editor( $top_description, 'top_tags' );
-				?>                   
-			</td>
-		</tr>
-
-		<?php }if( $bottom_tags ){ ?>
-		<!-- bottom cat -->
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="bottom_tags"><?php echo __( 'bottom Description', 'woocommerce' ); ?></label></th>
-			<td>
-				<?php                    
-					wp_editor( $bottom_description, 'bottom_tags' );
-				?>       
-			</td>
-		</tr>
-		<?php
-		}
-	}
-
-	// Save field @ admin page  
-	public function top_bottom_tags_save_wp_editor( $term_id, $tt_id = '', $taxonomy = '' ) {
-		
-		
-		if ( isset( $_POST['top_tags'] ) && 'product_tag' === $taxonomy ) {
-			update_woocommerce_term_meta( $term_id, 'top_tags', esc_attr( $_POST['top_tags'] ) );
-		}
-
-		if ( isset( $_POST['bottom_tags'] ) && 'product_tag' === $taxonomy ) {
-			update_woocommerce_term_meta( $term_id, 'bottom_tags', esc_attr( $_POST['bottom_tags'] ) );
-		}
-	}
 
 	// Display field under products @ Product Tag pages  		
 	public function top_tags_display_wp_editor_content() {
-		if ( is_product_taxonomy() ) {
-			$term = get_queried_object();
+		
+		$get_option = get_option( 'landing_page_for_category_tag_option' );	
+		// top cat check  
+		$top_tags = isset( $get_option['top_tags'] ) ? $get_option['top_tags'] : false ;
+		
+		if($top_tags){
 
-			if ( $term && ! empty( get_woocommerce_term_meta( $term->term_id, 'top_tags', true ) ) ) {
-				echo '<p class="term-description">' . wc_format_content( htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'top_tags', true ) ) ) . '</p>';
-			}						
+			if ( is_product_tag() ) {
+				$term = get_queried_object();
+
+				if ( $term && ! empty( get_term_meta( $term->term_id, 'top_tags', true ) ) ) {
+					echo '<p class="term-description">' . wc_format_content( htmlspecialchars_decode( get_term_meta( $term->term_id, 'top_tags', true ) ) ) . '</p>';
+				}						
+			}
 		}
 	}
+
 	// Display field under products @ Product Tag pages  		
 	public function bottom_tags_display_wp_editor_content() {
-		if ( is_product_taxonomy() ) {
-			$term = get_queried_object();			
-			if ( $term && ! empty( get_woocommerce_term_meta( $term->term_id, 'bottom_tags', true ) ) ) {
-				echo '<p class="term-description">' . wc_format_content( htmlspecialchars_decode( get_woocommerce_term_meta( $term->term_id, 'bottom_tags', true ) ) ) . '</p>';
+		
+		$get_option = get_option( 'landing_page_for_category_tag_option' );	
+		
+		// bottom cat check 
+		$bottom_tags = isset( $get_option['bottom_tags'] ) ? $get_option['bottom_tags'] : false ;
+
+		if($bottom_tags){
+
+			if ( is_product_tag() ) {
+				$term = get_queried_object();			
+				if ( $term && ! empty( get_term_meta( $term->term_id, 'bottom_tags', true ) ) ) {
+					echo '<p class="term-description">' . wc_format_content( htmlspecialchars_decode( get_term_meta( $term->term_id, 'bottom_tags', true ) ) ) . '</p>';
+				}
 			}
 		}
 	}

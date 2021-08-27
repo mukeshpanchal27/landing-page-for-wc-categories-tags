@@ -23,6 +23,10 @@
 
  class option_register{
 
+	public function __construct(  ) {
+		add_action( 'admin_init', [ $this, 'register' ] );
+	}
+
     public function register(){
 
 		// opton name
@@ -75,7 +79,7 @@
             // top _tags
 			array(
 				'id' => 'top_tags',
-				'title' => 'top  Description tags',
+				'title' => 'Top  Description Tags',
 				'callback' => array( $this, 'enable_disable' ),
 				'page' => 'landing_page_for_category_tag',
 				'section' => 'landing_page_for_category_tag_id',
@@ -88,7 +92,7 @@
             // bottom_tags
 			array(
 				'id' => 'bottom_tags',
-				'title' => 'Bottom  Description Categories',
+				'title' => 'Bottom  Description Tags',
 				'callback' => array( $this, 'enable_disable' ),
 				'page' => 'landing_page_for_category_tag',
 				'section' => 'landing_page_for_category_tag_id',
@@ -120,7 +124,7 @@
 
      // wpldl_option
 	public function landing_page_for_category_tagSectionManager(){
-		echo " Create Your Like Button ";
+		
 	}
 	// wpldl_option
 	public function landing_page_for_category_tagSanitize($input){
@@ -136,7 +140,12 @@
 		$checkbox = get_option( $option_name );
 
 		$checked = isset($checkbox[$name]) ? ($checkbox[$name] ? true : false) : false;
+				
+		echo '					
+			<input type="checkbox" style ="display:none;" class="wc_lp_final_checkd" id="_checkbox ' . $name . '"   name="' . $option_name . '[' . $name . ']" value="1" ' . ( $checked ? 'checked' : '') . '>
 
-		echo '<div class="custom-control custom-switch ' . $classes . '"><input type="checkbox"  id="' . $name . '"      name="' . $option_name . '[' . $name . ']"    value="1"   class="custom-control-input"   ' . ( $checked ? 'checked' : '') . '><label class="custom-control-label" for="' . $name . '"><div></div></label></div>';
+			<label for="_checkbox ' . $name . '" class="wc_lp_checkbox_lable"><div id="wc_lp_tick_mark"></div></label>			
+			
+		';
 	}
  }

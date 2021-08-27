@@ -29,9 +29,11 @@ class Landing_Page_For_Category_Tag_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	
 	public static function activate() {
-		
+		if ( !class_exists( 'WooCommerce' ) ) {
+
+			wp_die('Sorry, but this plugin requires the WooCommerce Parent Plugin to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
+		}
 	}
 
 }

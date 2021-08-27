@@ -42,10 +42,8 @@ define( 'LANDING_PAGE_FOR_CATEGORY_TAG_VERSION', '1.0.0' );
  * This action is documented in includes/class-landing-page-for-category-tag-activator.php
  */
 function activate_landing_page_for_category_tag() {
-
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-landing-page-for-category-tag-activator.php';
 	Landing_Page_For_Category_Tag_Activator::activate();
-	
 }
 
 /**
@@ -53,16 +51,11 @@ function activate_landing_page_for_category_tag() {
  * This action is documented in includes/class-landing-page-for-category-tag-deactivator.php
  */
 function deactivate_landing_page_for_category_tag() {
-	
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-landing-page-for-category-tag-deactivator.php';
 	Landing_Page_For_Category_Tag_Deactivator::deactivate();
-		
 }
-if ( class_exists( 'WooCommerce' ) ) {
-	register_activation_hook( __FILE__, 'activate_landing_page_for_category_tag' );
-}else{
-	echo "Plase activate to WooCommerce Plugin";
-}
+
+register_activation_hook( __FILE__, 'activate_landing_page_for_category_tag' );
 register_deactivation_hook( __FILE__, 'deactivate_landing_page_for_category_tag' );
 
 /**
