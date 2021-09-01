@@ -73,8 +73,7 @@
 		<div class="form-field">
 			<label for="top_description"><?php echo __( 'Top Description', 'woocommerce' ); ?></label>
 			      
-			<?php       
-				
+			<?php
 				wp_editor( '','top_description');
 			?>             
 		</div>
@@ -83,9 +82,9 @@
 		<!-- bottom cat -->
 		<div class="form-field">
 			<label for="bottom_description"><?php echo __( 'Bottom Description', 'woocommerce' ); ?></label>       
-			<?php       
+			<?php
 				wp_editor( '','bottom_description');
-			?>             
+			?>
 		</div>
 
 		<?php
@@ -112,9 +111,9 @@
 			<th scope="row" valign="top"><label for="top_description"><?php echo __( 'Top Description', 'woocommerce' ); ?></label></th>
 			<td>
 			
-				<?php        					            
+				<?php
 					wp_editor( $top_description, 'top_description' );
-				?>                   
+				?>
 			</td>
 		</tr>
 
@@ -123,7 +122,7 @@
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="bottom_description"><?php echo __( 'bottom Description', 'woocommerce' ); ?></label></th>
 			<td>
-				<?php                    
+				<?php
 					wp_editor( $bottom_description, 'bottom_description' );
 				?>       
 			</td>
@@ -132,7 +131,7 @@
 		}
 	}
 
-	// Save field @ admin page 		
+	// Save field @ admin page
 	public function top_bottom_categories_save_wp_editor( $term_id, $tt_id = '', $taxonomy = '' ) {
 
 		if ( isset( $_POST['top_description'] ) && 'product_cat' === $taxonomy ) {
