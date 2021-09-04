@@ -21,7 +21,7 @@
  * @subpackage Landing_Page_For_Category_Tag/includes
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
-class Landing_Page_For_Category_Tag_Loader {
+class WC_Landing_Page_For_Category_Tag_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

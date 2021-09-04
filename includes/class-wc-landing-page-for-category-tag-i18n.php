@@ -24,7 +24,7 @@
  * @subpackage Landing_Page_For_Category_Tag/includes
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
-class Landing_Page_For_Category_Tag_i18n {
+class WC_Landing_Page_For_Category_Tag_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Landing_Page_For_Category_Tag_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'landing-page-for-category-tag',
+			'wc-landing-page-for-category-tag',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

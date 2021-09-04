@@ -20,7 +20,7 @@
  * @subpackage Landing_Page_For_Category_Tag/public
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
-class Landing_Page_For_Category_Tag_Public {
+class WC_Landing_Page_For_Category_Tag_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -59,8 +59,8 @@ class Landing_Page_For_Category_Tag_Public {
 	public function top_categories_display_wp_editor_content() {
 
 		$woocommerce_term_id = get_queried_object_id();
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );
-		$wc_lp_top_categories = isset( $landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );
+		$wc_lp_top_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
 		
 		if( is_product_category() && $wc_lp_top_categories && $woocommerce_term_id ) {
 
@@ -72,7 +72,7 @@ class Landing_Page_For_Category_Tag_Public {
 			}
 		}
 
-		$wc_lp_top_tags = isset( $landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
+		$wc_lp_top_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
 		
 		if( is_product_tag() && $wc_lp_top_tags && $woocommerce_term_id ) {
 
@@ -89,8 +89,8 @@ class Landing_Page_For_Category_Tag_Public {
 	public function bottom_categories_display_wp_editor_content() {
 
 		$woocommerce_term_id = get_queried_object_id();
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );
-		$wc_lp_bottom_categories = isset( $landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );
+		$wc_lp_bottom_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;
 
 
 		if( is_product_category() && $wc_lp_bottom_categories && $woocommerce_term_id ) {
@@ -103,7 +103,7 @@ class Landing_Page_For_Category_Tag_Public {
 			}
 		}
 
-		$wc_lp_bottom_tags = isset( $landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;
+		$wc_lp_bottom_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;
 
 		if( is_product_tag() && $wc_lp_bottom_tags && $woocommerce_term_id ) {
 

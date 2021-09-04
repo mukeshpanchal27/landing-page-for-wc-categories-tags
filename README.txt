@@ -1,12 +1,13 @@
-=== Plugin Name ===
+=== Advanced WooCommerce Landing page for Categories & Tags ===
 Contributors: mukesh27
-Donate link: https://mukeshpanchal.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: WooCommerce, categories, tags, category, tag, landing page, landing, wc
+Donate link: #
+Requires at least: 5.6
+Tested up to: 5.8.1
+Requires PHP: 7.0
+Stable tag: 1.0.0
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 

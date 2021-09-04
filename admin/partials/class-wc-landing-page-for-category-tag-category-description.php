@@ -10,7 +10,7 @@
  * @subpackage Landing_Page_For_Category_Tag/admin
  */
 
- class category_description {
+ class WC_Landing_Page_For_Category_Description {
  
     /**
 	 * The ID of this plugin.
@@ -47,15 +47,15 @@
 
 	public function wc_lp_categories_tags_add_category_page() {
 
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );
-		$wc_lp_top_categories = isset( $landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
-		$wc_lp_bottom_categories = isset( $landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );
+		$wc_lp_top_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
+		$wc_lp_bottom_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;
 
 		if( $wc_lp_top_categories ) {
 		?>
 			<div class="form-field">
 				<label for="wc_lp_top_categories">
-					<?php echo __( 'Top Description', 'Landing_Page_For_Category_Tag' ); ?>
+					<?php echo __( 'Top Description', 'wc-landing-page-for-category-tag' ); ?>
 				</label>
 				<?php wp_editor( '', 'wc_lp_categories_top_description', array( 'editor_height' => '200px' ) ); ?>
 			</div>
@@ -64,7 +64,7 @@
 		if( $wc_lp_bottom_categories ) { ?>
 			<div class="form-field">
 				<label for="wc_lp_bottom_categories">
-					<?php echo __( 'Bottom Description', 'Landing_Page_For_Category_Tag' ); ?>
+					<?php echo __( 'Bottom Description', 'wc-landing-page-for-category-tag' ); ?>
 				</label>       
 				<?php wp_editor( '', 'wc_lp_categories_bottom_description', array( 'editor_height' => '200px' ) ); ?>
 			</div>
@@ -74,10 +74,10 @@
 
 	public function wc_lp_categories_tags_edit_category_page( $term ) {
 		
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );	
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );	
 
-		$wc_lp_top_categories = isset( $landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
-		$wc_lp_bottom_categories = isset( $landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;		
+		$wc_lp_top_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
+		$wc_lp_bottom_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;		
 		$wc_lp_categories_top_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_categories_top_description', true ) );
 		$wc_lp_categories_bottom_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_categories_bottom_description', true ) );
 
@@ -85,7 +85,7 @@
 		?>
 
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="wc_lp_categories_top_description"><?php echo __( 'Top Description', 'Landing_Page_For_Category_Tag' ); ?></label></th>
+			<th scope="row" valign="top"><label for="wc_lp_categories_top_description"><?php echo __( 'Top Description', 'wc-landing-page-for-category-tag' ); ?></label></th>
 			<td>
 				<?php wp_editor( $wc_lp_categories_top_description, 'wc_lp_categories_top_description' ); ?>
 			</td>
@@ -97,7 +97,7 @@
 		?>
 
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="wc_lp_categories_bottom_description"><?php echo __( 'bottom Description', 'Landing_Page_For_Category_Tag' ); ?></label></th>
+			<th scope="row" valign="top"><label for="wc_lp_categories_bottom_description"><?php echo __( 'Bottom Description', 'wc-landing-page-for-category-tag' ); ?></label></th>
 			<td>
 				<?php wp_editor( $wc_lp_categories_bottom_description, 'wc_lp_categories_bottom_description' ); ?>       
 			</td>

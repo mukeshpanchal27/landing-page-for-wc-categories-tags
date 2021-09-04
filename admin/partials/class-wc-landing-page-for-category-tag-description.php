@@ -21,7 +21,7 @@
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
 
- class tag_description {
+ class WC_Landing_Page_For_Tag_Description {
  
     /**
 	 * The ID of this plugin.
@@ -59,14 +59,14 @@
 
 	public function wc_lp_categories_tags_add_tag_page() {
 
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );	
-		$wc_lp_top_tags = isset( $landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
-		$wc_lp_bottom_tags = isset( $landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );	
+		$wc_lp_top_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
+		$wc_lp_bottom_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;
 
 		if( $wc_lp_top_tags ) {
 		?>
 		<div class="form-field">
-			<label for="wc_lp_top_tags"><?php echo __( 'Top Description', 'Landing_Page_For_Category_Tag' ); ?></label>       
+			<label for="wc_lp_top_tags"><?php echo __( 'Top Description', 'wc-landing-page-for-category-tag' ); ?></label>       
 			<?php wp_editor( '', 'wc_lp_tags_top_description', array( 'editor_height' => '200px' ) ); ?>
 		</div>
 		<?php
@@ -75,7 +75,7 @@
 		if( $wc_lp_bottom_tags ) {
 		?>
 			<div class="form-field">
-				<label for="wc_lp_bottom_tags"><?php echo __( 'Bottom Description', 'Landing_Page_For_Category_Tag' ); ?></label>
+				<label for="wc_lp_bottom_tags"><?php echo __( 'Bottom Description', 'wc-landing-page-for-category-tag' ); ?></label>
 				<?php wp_editor( '', 'wc_lp_tags_bottom_description', array( 'editor_height' => '200px' ) ); ?>
 			</div>
 		<?php
@@ -84,10 +84,10 @@
 	
 	public function wc_lp_categories_tags_edit_tag_page( $term ) {
 
-		$landing_page_for_category_tag_option = get_option( 'landing_page_for_category_tag_option' );	
+		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );	
 
-		$wc_lp_top_tags = isset( $landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
-		$wc_lp_bottom_tags = isset( $landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;		
+		$wc_lp_top_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_tags'] : '' ;
+		$wc_lp_bottom_tags = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_tags'] : '' ;		
 		$wc_lp_tags_top_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_tags_top_description', true ) );
 		$wc_lp_tags_bottom_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_tags_bottom_description', true ) );
 
@@ -95,7 +95,7 @@
 		?>
 		<tr class="form-field">
 			<th scope="row" valign="top">
-				<label for="wc_lp_tags_top_description"><?php echo __( 'Top Description', 'Landing_Page_For_Category_Tag' ); ?></label>
+				<label for="wc_lp_tags_top_description"><?php echo __( 'Top Description', 'wc-landing-page-for-category-tag' ); ?></label>
 			</th>
 			<td>
 				<?php wp_editor( $wc_lp_tags_top_description, 'wc_lp_tags_top_description' ); ?>
@@ -109,7 +109,7 @@
 		?>
 		<tr class="form-field">
 			<th scope="row" valign="top">
-				<label for="wc_lp_tags_bottom_description"><?php echo __( 'bottom Description', 'Landing_Page_For_Category_Tag' ); ?></label>
+				<label for="wc_lp_tags_bottom_description"><?php echo __( 'bottom Description', 'wc-landing-page-for-category-tag' ); ?></label>
 			</th>
 			<td>
 				<?php wp_editor( $wc_lp_tags_bottom_description, 'wc_lp_tags_bottom_description' ); ?>       
