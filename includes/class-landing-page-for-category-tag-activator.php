@@ -30,7 +30,16 @@ class Landing_Page_For_Category_Tag_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		if ( !class_exists( 'WooCommerce' ) ) {
 
+			$message = sprintf( 
+				esc_html__( 'Sorry, but this plugin requires the WooCommerce Parent Plugin to be installed and active. %1$s&raquo; Return to Plugins.%2$s', 'my-text-domain' ),
+				'<a href="' . admin_url( 'plugins.php' ) . '">',
+				'</a>'
+			);
+			
+			wp_die( $message );
+		}
 	}
 
 }

@@ -155,8 +155,11 @@ class Landing_Page_For_Category_Tag {
 		$plugin_admin = new Landing_Page_For_Category_Tag_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		
+		/* Register plugin config page */
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wc_lp_categories_tags_admin_menu_page' );
 
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'landing_page_for_category_tag_option_register' );
 	}
 
 	/**
