@@ -27,7 +27,7 @@
  * @subpackage Landing_Page_For_Category_Tag/includes
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
-class Landing_Page_For_Category_Tag {
+class WC_Landing_Page_For_Category_Tag {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -67,12 +67,12 @@ class Landing_Page_For_Category_Tag {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'LANDING_PAGE_FOR_CATEGORY_TAG_VERSION' ) ) {
-			$this->version = LANDING_PAGE_FOR_CATEGORY_TAG_VERSION;
+		if ( defined( 'LANDING_PAGE_FOR_WC_CATEGORIES_TAGS_VERSION' ) ) {
+			$this->version = LANDING_PAGE_FOR_WC_CATEGORIES_TAGS_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'landing-page-for-category-tag';
+		$this->plugin_name = 'landing-page-for-wc-categories-tags';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -103,26 +103,29 @@ class Landing_Page_For_Category_Tag {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-landing-page-for-category-tag-loader.php';
+		
+
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-landing-page-for-wc-categories-tags-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-landing-page-for-category-tag-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-landing-page-for-wc-categories-tags-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-landing-page-for-category-tag-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-landing-page-for-wc-categories-tags-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-landing-page-for-category-tag-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-landing-page-for-wc-categories-tags-public.php';
 
-		$this->loader = new Landing_Page_For_Category_Tag_Loader();
+		$this->loader = new WC_Landing_Page_For_Category_Tag_Loader();
 
 	}
 
@@ -137,7 +140,7 @@ class Landing_Page_For_Category_Tag {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Landing_Page_For_Category_Tag_i18n();
+		$plugin_i18n = new WC_Landing_Page_For_Category_Tag_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -152,12 +155,14 @@ class Landing_Page_For_Category_Tag {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Landing_Page_For_Category_Tag_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new WC_Landing_Page_For_Category_Tag_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		
-		/* Register Plugin Config Admin Page */
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu_page' );
+		/* Register plugin config page */
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wc_lp_categories_tags_admin_menu_page' );
+
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'wc_lp_categories_tags_option_register' );
 	}
 
 	/**
@@ -169,10 +174,7 @@ class Landing_Page_For_Category_Tag {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Landing_Page_For_Category_Tag_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$plugin_public = new WC_Landing_Page_For_Category_Tag_Public( $this->get_plugin_name(), $this->get_version() );
 
 	}
 

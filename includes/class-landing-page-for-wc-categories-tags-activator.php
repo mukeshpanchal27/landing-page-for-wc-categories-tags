@@ -20,19 +20,18 @@
  * @subpackage Landing_Page_For_Category_Tag/includes
  * @author     Mukesh Panchal <mukeshpanchal27@gmail.com>
  */
-class Landing_Page_For_Category_Tag_Activator {
+class WC_Landing_Page_For_Category_Tag_Activator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
 	public static function activate() {
 		if ( !class_exists( 'WooCommerce' ) ) {
 
-			wp_die('Sorry, but this plugin requires the WooCommerce Parent Plugin to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
+			$message = sprintf( 
+				esc_html__( 'Sorry, but this plugin requires the WooCommerce Parent Plugin to be installed and active. %1$s&raquo; Return to Plugins.%2$s', 'landing-page-for-wc-categories-tags' ),
+				'<a href="' . admin_url( 'plugins.php' ) . '">',
+				'</a>'
+			);
+			
+			wp_die( $message );
 		}
 	}
 
