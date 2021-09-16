@@ -8,9 +8,8 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * Plugin Name:       Landing page for WooCommerce Categories & Tags
- * Plugin URI:        https://mukeshpanchal.com/
- * Description:       A simple and smart companion that allows you to insert Rich text into any product categories and tags.
+ * Plugin Name:       Landing page for WC Categories & Tags
+ * Description:       This plugin allows you to add extra Rich text to product categories and tags page.
  * Version:           1.0.0
  * Author:            Mukesh Panchal
  * Author URI:        https://mukeshpanchal.com/

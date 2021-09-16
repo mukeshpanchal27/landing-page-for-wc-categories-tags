@@ -1,4 +1,4 @@
-=== Landing page for WooCommerce Categories & Tags ===
+=== Landing page for WC Categories & Tags ===
 Contributors: mukesh27
 Tags: WooCommerce, categories, tags, category, tag, landingpage, landing, wc
 Donate link: #
