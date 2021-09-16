@@ -80,8 +80,8 @@ class WC_Landing_Page_For_Category_Tag_Admin {
 	 */
 	public function wc_lp_categories_tags_admin_menu_page() {
 		add_menu_page( 
-			__( 'WooCommerce Landing Page for Categories &amp; Tags Settings', 'landing-page-for-wc-categories-tags' ),
-			__( 'WC Landing Page for Categories &amp; Tags', 'landing-page-for-wc-categories-tags' ),
+			__( 'Landing Page for WooCommerce Categories &amp; Tags Settings', 'landing-page-for-wc-categories-tags' ),
+			__( 'Landing Page for WC Categories &amp; Tags', 'landing-page-for-wc-categories-tags' ),
 			'manage_options',
 			'wc_lp_categories_tags',
 			array( $this, 'wc_lp_categories_tags_callback' ),
@@ -91,7 +91,7 @@ class WC_Landing_Page_For_Category_Tag_Admin {
 
 	public function wc_lp_categories_tags_callback() { ?>
 		<div class="wrap wc-lp-wrapper">
-			<h1><?php _e( 'WooCommerce Landing Page for Categories &amp; Tags Settings', 'landing-page-for-wc-categories-tags' ); ?></h1>
+			<h1><?php _e( 'Landing Page for WooCommerce Categories &amp; Tags Settings', 'landing-page-for-wc-categories-tags' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'wc_landing_page_for_category_tag_settings' );
