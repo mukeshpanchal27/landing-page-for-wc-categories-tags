@@ -39,7 +39,18 @@ If you find this plugin useful , please leave a good rating and consider checkin
 
 1. Settings Screen
 
+== Frequently Asked Questions ==
+
+= Can I use plugin any WordPress theme =
+
+Yes.
+
 == Changelog ==
+
+= 1.0.0 =
+* Initial version
+
+== Upgrade Notice ==
 
 = 1.0.0 =
 * Initial version
