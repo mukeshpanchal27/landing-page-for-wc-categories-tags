@@ -67,7 +67,7 @@ class WC_Landing_Page_For_Category_Tag_Public {
 			$wc_lp_categories_top_description = get_term_meta( $woocommerce_term_id, 'wc_lp_categories_top_description', true );
 			if ( $wc_lp_categories_top_description ) {
 				echo '<div class="wc-lp-top-description wc-lp-category-top-description">';
-					echo wc_format_content( htmlspecialchars_decode( $wc_lp_categories_top_description ) );
+					echo wc_format_content( wp_kses_post( $wc_lp_categories_top_description ) );
 				echo '</div>';
 			}
 		}
@@ -79,7 +79,7 @@ class WC_Landing_Page_For_Category_Tag_Public {
 			$wc_lp_tags_top_description = get_term_meta( $woocommerce_term_id, 'wc_lp_tags_top_description', true );
 			if ( $wc_lp_tags_top_description ) {
 				echo '<div class="wc-lp-top-description wc-lp-tag-top-description">';
-					echo wc_format_content( htmlspecialchars_decode( $wc_lp_tags_top_description ) );
+					echo wc_format_content( wp_kses_post( $wc_lp_tags_top_description ) );
 				echo '</div>';
 			}
 		}
@@ -98,7 +98,7 @@ class WC_Landing_Page_For_Category_Tag_Public {
 			$wc_lp_categories_bottom_description = get_term_meta( $woocommerce_term_id, 'wc_lp_categories_bottom_description', true );
 			if ( $wc_lp_categories_bottom_description ) {
 				echo '<div class="wc-lp-bottom-description wc-lp-category-bottom-description">';
-					echo wc_format_content( htmlspecialchars_decode( $wc_lp_categories_bottom_description ) );
+					echo wc_format_content( wp_kses_post( $wc_lp_categories_bottom_description ) );
 				echo '</div>';
 			}
 		}
@@ -110,7 +110,7 @@ class WC_Landing_Page_For_Category_Tag_Public {
 			$wc_lp_tags_bottom_description = get_term_meta( $woocommerce_term_id, 'wc_lp_tags_bottom_description', true );
 			if ( $wc_lp_tags_bottom_description ) {
 				echo '<div class="wc-lp-bottom-description wc-lp-tag-bottom-description">';
-					echo wc_format_content( htmlspecialchars_decode( $wc_lp_tags_bottom_description ) );
+					echo wc_format_content( wp_kses_post( $wc_lp_tags_bottom_description ) );
 				echo '</div>';
 			}
 		}

@@ -78,8 +78,8 @@
 
 		$wc_lp_top_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
 		$wc_lp_bottom_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_categories'] : '' ;		
-		$wc_lp_categories_top_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_categories_top_description', true ) );
-		$wc_lp_categories_bottom_description = htmlspecialchars_decode( get_term_meta( $term->term_id, 'wc_lp_categories_bottom_description', true ) );
+		$wc_lp_categories_top_description = wp_kses_post( get_term_meta( $term->term_id, 'wc_lp_categories_top_description', true ) );
+		$wc_lp_categories_bottom_description = wp_kses_post( get_term_meta( $term->term_id, 'wc_lp_categories_bottom_description', true ) );
 
 		if( $wc_lp_top_categories ) {
 		?>
@@ -111,11 +111,11 @@
 		if ( 'product_cat' === $taxonomy ) {
 
 			if ( isset( $_POST['wc_lp_categories_top_description'] ) ) {
-				update_woocommerce_term_meta( $term_id, 'wc_lp_categories_top_description', esc_attr( $_POST['wc_lp_categories_top_description'] ) );
+				update_woocommerce_term_meta( $term_id, 'wc_lp_categories_top_description', wp_kses_post( $_POST['wc_lp_categories_top_description'] ) );
 			}
 			
 			if ( isset( $_POST['wc_lp_categories_bottom_description'] ) ) {
-				update_woocommerce_term_meta( $term_id, 'wc_lp_categories_bottom_description', esc_attr( $_POST['wc_lp_categories_bottom_description'] ) );
+				update_woocommerce_term_meta( $term_id, 'wc_lp_categories_bottom_description', wp_kses_post( $_POST['wc_lp_categories_bottom_description'] ) );
 			}
 		}
 	}
