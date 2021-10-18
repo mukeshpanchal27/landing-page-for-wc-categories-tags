@@ -1,4 +1,4 @@
-=== Landing page for WC Categories & Tags ===
+=== Landing page for WC archive Pages ===
 Contributors: mukesh27
 Tags: WooCommerce, categories, tags, category, tag, landingpage, landing, wc
 Donate link: https://www.paypal.com/paypalme/mukeshpanchal27
@@ -33,7 +33,7 @@ If you find this plugin useful , please leave a good rating and consider checkin
 
 1. Install Landing page for WooCommerce Categories & Tags by uploading the `landing-page-for-wc-categories-tags` directory to the `/wp-content/plugins/` directory.
 2. Activate Landing page for WooCommerce Categories & Tags through the `Plugins` menu in WordPress.
-3. Create Landing page for Categories & Tags by going to the `Settings > Landing Page for WC Categories & Tags` menu.
+3. Create Landing page for Categories & Tags by going to the `Settings > Landing page for WC archive Pages` menu.
 
 == Screenshots ==
 
@@ -48,6 +48,7 @@ Yes.
 == Changelog ==
 
 = 1.0.1 =
+* Added Shop page top bottom description
 
 = 1.0.0 =
 * Initial version
