@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * Plugin Name:       Landing page for WC archive Pages
+ * Plugin Name:       Landing page for WC Archive Pages
  * Description:       This plugin allows you to add extra Rich text to product categories and tags page.
  * Version:           1.0.1
  * Author:            Mukesh Panchal
