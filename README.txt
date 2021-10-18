@@ -1,7 +1,7 @@
 === Landing page for WC Categories & Tags ===
 Contributors: mukesh27
 Tags: WooCommerce, categories, tags, category, tag, landingpage, landing, wc
-Donate link: #
+Donate link: https://www.paypal.com/paypalme/mukeshpanchal27
 Requires at least: 5.6
 Tested up to: 5.8.1
 Requires PHP: 7.0
