@@ -10,7 +10,7 @@
  *
  * Plugin Name:       Landing page for WC Categories & Tags
  * Description:       This plugin allows you to add extra Rich text to product categories and tags page.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Mukesh Panchal
  * Author URI:        https://mukeshpanchal.com/
  * License:           GPL-2.0+

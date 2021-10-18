@@ -70,7 +70,7 @@ class WC_Landing_Page_For_Category_Tag {
 		if ( defined( 'LANDING_PAGE_FOR_WC_CATEGORIES_TAGS_VERSION' ) ) {
 			$this->version = LANDING_PAGE_FOR_WC_CATEGORIES_TAGS_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.0.1';
 		}
 		$this->plugin_name = 'landing-page-for-wc-categories-tags';
 
