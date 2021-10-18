@@ -135,6 +135,51 @@ class WC_Landing_Page_For_Category_Tag_Admin {
 						</tr>
 					</tbody>
 				</table>
+				<table class="form-table" role="presentation">
+					<tbody>
+						<tr>
+							<td colspan="2"><h2><?php _e( 'Shop Page Description', 'landing-page-for-wc-categories-tags'); ?></h2></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" style="display:none;" class="wc_lp_final_checkd" id="wc_lp_top_shop_page" name="wc_landing_page_for_category_tag_option[wc_lp_top_shop_page]" value="1"<?php echo ( isset( $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page'] ) && ( 1 == $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page'] ) ) ? ' checked="checked"' : ''; ?>>
+								<label for="wc_lp_top_shop_page" class="wc_lp_checkbox_lable"><div class="wc_lp_tick_mark"></div></label>
+								<label for="wc_lp_top_shop_page" class="wc_ld_label"><?php _e( 'Top Description', 'landing-page-for-wc-categories-tags' ); ?></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<?php 
+									$wc_lp_top_shop_page_description = isset($wc_landing_page_for_category_tag_option['wc_lp_top_shop_page_description']) ? $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page_description'] : '';
+									$wc_lp_top_shop_page_description_settings = array(
+										'textarea_name' => 'wc_landing_page_for_category_tag_option[wc_lp_top_shop_page_description]',
+										'editor_height' => '200px'
+									);
+									wp_editor( $wc_lp_top_shop_page_description, 'wc_lp_top_shop_page_description', $wc_lp_top_shop_page_description_settings );
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" style="display:none;" class="wc_lp_final_checkd" id="wc_lp_bottom_shop_page" name="wc_landing_page_for_category_tag_option[wc_lp_bottom_shop_page]" value="1"<?php echo ( isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page'] ) && ( 1 == $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page'] ) ) ? ' checked="checked"' : ''; ?>>
+								<label for="wc_lp_bottom_shop_page" class="wc_lp_checkbox_lable"><div class="wc_lp_tick_mark"></div></label>
+								<label for="wc_lp_bottom_shop_page" class="wc_ld_label"><?php _e( 'Bottom Description', 'landing-page-for-wc-categories-tags'); ?></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<?php 
+									$wc_lp_bottom_shop_page_description = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page_description'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page_description'] : '';
+									$wc_lp_bottom_shop_page_description_settings = array(
+										'textarea_name' => 'wc_landing_page_for_category_tag_option[wc_lp_bottom_shop_page_description]',
+										'editor_height' => '200px'
+									);
+									wp_editor( $wc_lp_bottom_shop_page_description, 'wc_lp_bottom_shop_page_description', $wc_lp_bottom_shop_page_description_settings );
+								?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				<?php submit_button(); ?>
 			</form>
 		</div>

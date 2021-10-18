@@ -58,6 +58,8 @@ class WC_Landing_Page_For_Category_Tag_Public {
 
 	public function top_categories_display_wp_editor_content() {
 
+		
+
 		$woocommerce_term_id = get_queried_object_id();
 		$wc_landing_page_for_category_tag_option = get_option( 'wc_landing_page_for_category_tag_option' );
 		$wc_lp_top_categories = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_categories'] : '' ;
@@ -82,6 +84,15 @@ class WC_Landing_Page_For_Category_Tag_Public {
 					echo wc_format_content( wp_kses_post( $wc_lp_tags_top_description ) );
 				echo '</div>';
 			}
+		}
+		
+		$wc_lp_top_shop_page_description = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page_description'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page_description'] : '' ;
+		$wc_lp_top_shop_page = isset( $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_top_shop_page'] : '' ;
+		
+		if( is_shop() && $wc_lp_top_shop_page && $wc_lp_top_shop_page_description){
+			echo '<div class="wc-lp-bottom-shop-page-description">';
+				echo wc_format_content( wp_kses_post( $wc_lp_top_shop_page_description ) );
+			echo '</div>';
 		}
 
 	}
@@ -113,6 +124,15 @@ class WC_Landing_Page_For_Category_Tag_Public {
 					echo wc_format_content( wp_kses_post( $wc_lp_tags_bottom_description ) );
 				echo '</div>';
 			}
+		}
+
+		$wc_lp_bottom_shop_page_description = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page_description'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page_description'] : '' ;
+		$wc_lp_bottom_shop_page = isset( $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page'] ) ? $wc_landing_page_for_category_tag_option['wc_lp_bottom_shop_page'] : '' ;
+		
+		if( is_shop() && $wc_lp_bottom_shop_page && $wc_lp_bottom_shop_page_description){
+			echo '<div class="wc-lp-bottom-shop-page-description">';
+				echo wc_format_content( wp_kses_post( $wc_lp_bottom_shop_page_description ) );
+			echo '</div>';
 		}
 	}
 
